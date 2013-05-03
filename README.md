@@ -4,6 +4,9 @@ A simple TUIO server for SUR40
 It sends all touches as TUIO pointers at the moment.
 Finger's directions and objects will follow.
 
+Download Windows 7 Binary at:
+http://ixd-hof.de/wp-content/uploads/2013/05/PixelTuio.zip
+
 TUIO Adress: 127.0.0.1
 Port: 3333
 

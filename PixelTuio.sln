@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUR_TUIO", "SUR_TUIO.csproj", "{F317F398-4A41-4544-ACDB-A0902E3B3B94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelTuio", "PixelTuio.csproj", "{F317F398-4A41-4544-ACDB-A0902E3B3B94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
