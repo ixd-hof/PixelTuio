@@ -11,6 +11,7 @@ namespace Tuio
     /// 
     /// (c) 2010 by Dominik Schmidt (schmidtd@comp.lancs.ac.uk)
     /// </summary>
+    ///
     public class TuioCursor
     {
         #region properties

@@ -64,8 +64,10 @@ namespace PixelTuio
 
             if (touches.Count > 0)
             {
+                tuioserver.InitFrame();
             foreach (TouchPoint touch in touches)
             {
+
                 if (touch.IsFingerRecognized || InteractiveSurface.PrimarySurfaceDevice.IsFingerRecognitionSupported == false)
                 {
                     float x = touch.X / size_x;
@@ -86,6 +88,29 @@ namespace PixelTuio
                     }
 
                 }
+
+                else if (touch.IsTagRecognized || InteractiveSurface.PrimarySurfaceDevice.IsTagRecognitionSupported == false)
+                {
+                    /// tuio/2Dobj set s i x y a X Y A m r
+                    float x = touch.X / size_x;
+                    float y = touch.Y / size_y;
+                    float a = touch.Orientation;
+
+                    current_frame_tuio_ids.Add(touch.Id);
+
+                    //touch.X, touch.Y),touch.Orientation
+
+                    if (tuio_ids.Contains(touch.Id))
+                    {
+                        tuioserver.UpdateTuioObject(touch.Id, touch.Tag.Value, new System.Drawing.PointF(x, y), touch.Orientation);
+                    }
+                    else
+                    {
+                        tuioserver.AddTuioObject(touch.Id, touch.Tag.Value, new System.Drawing.PointF(x, y), touch.Orientation);
+                        tuio_ids.Add(touch.Id);
+                    }
+
+                }
                 
             }
             
@@ -97,6 +122,7 @@ namespace PixelTuio
                 foreach (int id in obsolete_tuio_ids)
                 {
                     tuioserver.DeleteTuioCursor(id);
+                    tuioserver.DeleteTuioObject(id);
                 }
                 tuio_ids.SymmetricExceptWith(obsolete_tuio_ids);
             }
@@ -105,16 +131,17 @@ namespace PixelTuio
                 foreach (int id in tuio_ids)
                 {
                     tuioserver.DeleteTuioCursor(id);
+                    tuioserver.DeleteTuioObject(id);
                 }
                 tuio_ids.Clear();
                 tuio_ids.TrimExcess();
             }
 
-            tuioserver.InitFrame();
             tuioserver.CommitFrame();
 
             return count;
         }
+
 
         protected override void Initialize()
         {
@@ -158,7 +185,7 @@ namespace PixelTuio
             touchTarget = new TouchTarget(IntPtr.Zero, EventThreadChoice.OnBackgroundThread);
             touchTarget.EnableInput();
         }
-        
+
         protected override void Update(GameTime gameTime)
         {
             ReadOnlyTouchPointCollection t = touchTarget.GetState();
