@@ -7,6 +7,7 @@ Finger's directions and objects will follow.
 Download Windows 7 Binary at:
 PixelTUIO 0.2b
 https://github.com/ixd-hof/PixelTuio/raw/master/PixelTUIO.zip
+
 PixelTUIO 0.1
 http://ixd-hof.de/wp-content/uploads/2013/05/PixelTuio.zip
 
