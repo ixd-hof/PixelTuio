@@ -1,8 +1,7 @@
 PixelTuio 0.2b
 
-A simple TUIO server for SUR40
-It sends all touches as TUIO pointers at the moment.
-Finger's directions and objects will follow.
+A simple TUIO server for SUR40.
+It sends all touches as TUIO cursors and tags as TUIO objects.
 
 Download Windows 7 Binary at:
 PixelTUIO 0.2b
